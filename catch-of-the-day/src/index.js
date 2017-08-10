@@ -1,9 +1,29 @@
 // any code that gets written in here will be bundled
 import React from 'react';
 import { render } from 'react-dom'; // just import one method from react-dom
-import './css/style.css'; // importing css from css file
+import { BrowserRouter, Match, Miss } from 'react-router';
 
-import StorePicker from './components/StorePicker';
+import './css/style.css'; // importing css from css file
 import App from './components/App';
 
-render(<App/>, document.querySelector('#main'));
+import StorePicker from './components/StorePicker';
+import NotFound from './components/NotFound';
+
+/**
+ * when using props (pattern, component) in jsx that are equal to
+ * non-string values you need to wrap them in curlys {}
+ */
+
+const Root = () => {
+  return (
+    <BrowserRouter>
+    <div>
+      <Match exactly pattern="/" component={StorePicker} />
+      <Match pattern="/store/:storeid" component={App} />
+       <Miss component={NotFound} /> 
+    </div>
+    </BrowserRouter>
+  )
+}
+
+render(<Root/>, document.querySelector('#main'));
