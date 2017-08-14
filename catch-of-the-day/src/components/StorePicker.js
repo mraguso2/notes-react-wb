@@ -23,10 +23,10 @@ class StorePicker extends React.Component {
     // console.log(this); // obj this would be null
 
     // first grab text from box
-    const value = this.storeInput.value;
-    console.log(value);
+    const storeId = this.storeInput.value;
+    console.log(storeId);
     // second we're going to transition from / to /store/:storeid
-
+    this.context.router.transitionTo(`/store/${storeId}`)
   }
   
   // render methods are bound to the actual class that you are in
@@ -41,6 +41,11 @@ class StorePicker extends React.Component {
       </form>
     )
   }
+}
+
+StorePicker.contextTypes = {
+  // Need to surface the router from the parent with contextTypes
+  router: React.PropTypes.object // tell React that StorePicker expects a router
 }
 
 export default StorePicker;

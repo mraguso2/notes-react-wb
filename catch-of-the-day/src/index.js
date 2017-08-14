@@ -15,13 +15,14 @@ import NotFound from './components/NotFound';
  */
 
 const Root = () => {
+  // BrowserRouter is at the Parent top level, so access to router throughout
   return (
     <BrowserRouter>
-    <div>
-      <Match exactly pattern="/" component={StorePicker} />
-      <Match pattern="/store/:storeid" component={App} />
-       <Miss component={NotFound} /> 
-    </div>
+      <div>
+        <Match exactly pattern="/" component={StorePicker} />
+        <Match pattern="/store/:storeid" component={App} />
+        <Miss component={NotFound} /> 
+      </div>
     </BrowserRouter>
   )
 }
