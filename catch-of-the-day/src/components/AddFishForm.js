@@ -1,6 +1,7 @@
 import React from 'react';
 
 class AddFishForm extends React.Component {
+  // make a method
   createFish(event) {
     event.preventDefault();
     console.log('Gonna make some fish');
