@@ -35,7 +35,7 @@ class App extends React.Component {
 
     // check if there is any order in localstorage
     const localStorageRef = localStorage.getItem(`order-${this.props.params.storeId}`);
-    if (localStorage) {
+    if (localStorageRef) {
       // update our App component's order state
       this.setState({
         order: JSON.parse(localStorageRef)
@@ -123,6 +123,10 @@ class App extends React.Component {
       </div>
     )
   }
+}
+
+App.propTypes ={
+  params: React.PropTypes.object.isRequired
 }
 
 export default App;
